@@ -1,0 +1,35 @@
+.body_ca{
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+}
+
+
+.connect{ 
+  width: 100%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  align-items: center;
+  font-size: large;
+  min-height: 10vh;
+  width: 99%;
+  border: none;
+  box-shadow: rgba(1, 108, 201, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  background-color: white;
+  animation: fadein 5s;
+  -webkit-animation: fadein 5s;
+}
+
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}

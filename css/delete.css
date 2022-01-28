@@ -1,0 +1,16 @@
+#supp{
+text-align: center;
+}
+#voulez-vous{
+    text-align: center;
+    margin-top: 10%;
+    font-weight: bold;
+    font-size: large;
+    color: red;
+}
+#oui{
+    background-color: red;
+}
+#centre_bouton{
+align-items: center;
+}
