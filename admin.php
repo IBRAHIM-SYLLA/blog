@@ -1,7 +1,9 @@
 <?php
     session_start();
+    if(!empty($_SESSION['user']) && $_SESSION['user'][0]['id_droits'] != 1337 ){
+        header('Location: index.php');
+    }
     require_once ('bdd.php');
-    
     $title = 'Admin';
     $error = "";
 
@@ -57,7 +59,7 @@
 <body>
     <header>
         <?php
-            require_once ('header.php');            
+            require_once ('header.php');
         ?>
     </header>
     <main>

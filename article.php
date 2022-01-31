@@ -90,9 +90,8 @@
         <div class="art">
             <div>
                 <?php
-                    echo $articles[0]['login'].' '.date_format(date_create($articles[0]['date']), 'd/m/Y H:i:s').' ';
-                    echo $articles[0]['nom'];
-                    echo $articles[0]['article'];
+                    echo $articles[0]['login'].' '.date_format(date_create($articles[0]['date']), 'd/m/Y H:i:s').'<br>'.' ';
+                    echo 'Catégorie:'.' '.$articles[0]['nom'].'<br>'.' '.'Article:'.$articles[0]['article'];
 
                     $id_article = $articles[0]["id"];
 
@@ -129,8 +128,11 @@
             ?>
         </div>
             <?php
-                $requete3 = mysqli_query($connex, "SELECT commentaire, commentaires.date, login, articles.id from articles inner join commentaires on articles.id = commentaires.id_article  inner join utilisateurs on utilisateurs.id = commentaires.id_utilisateur where articles.id = '$recupArticle' ORDER by date DESC");
-                $comArticles = mysqli_fetch_all($requete3, MYSQLI_ASSOC);
+                $requete3 = mysqli_query($connex, "SELECT  commentaire, commentaires.date, login, articles.id from articles inner join commentaires on articles.id = commentaires.id_article  inner join utilisateurs on utilisateurs.id = commentaires.id_utilisateur where articles.id = '$recupArticle' ORDER by date DESC");
+                $requete4 = mysqli_query($connex, "SELECT id FROM commentaires");
+
+                $recupid = mysqli_fetch_all($requete4, MYSQLI_ASSOC);
+                $comArticles= mysqli_fetch_all($requete3, MYSQLI_ASSOC);
             ?>
             <div id="grandcontainer">
                 <?php
@@ -140,8 +142,21 @@
                                     <div class="login">
                                          <?php echo "<div id ='poster'>Posté le :"." ".date_format(date_create($comArticle['date']), 'd/m/Y H:i:s').' '.'</div><div id="par">Posté par :'.' '.$comArticle['login'].'</div>';?>
                                     </div>
-                                    <textarea name="" id="commentaire" cols="30" rows="10" readonly><?php echo $comArticle['commentaire']?></textarea>
-                                </fieldset>
+                                    <textarea name="" id="commentaire" cols="30" rows="10" readonly>
+                                        <?php echo $comArticle['commentaire']?>
+                                    </textarea>
+                                    <?php
+                                    if (isset($_POST["deleteCommentaire"])) {
+                                        $supprime = $recupid[0]['id'];
+                                        $delete = mysqli_query($connex, "DELETE FROM commentaires WHERE id = '$supprime'");
+                                    }
+                                    if(!empty($_SESSION['user']) && $_SESSION['user'][0]['id_droits'] == 1337 ){
+                                        echo "<form action='' method='post'>
+                                        <button class='input_bnt2' type='submit' name='deleteCommentaire'>Supprimer</button>
+                                        </form>";
+                                        echo "*Appuyer deux fois si vous voulez vraiment supprimer ce commentaire";
+                                    }
+                                    ?>
                             </div>
                         </div><?php
                     }

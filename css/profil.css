@@ -5,8 +5,8 @@ body{
 #main3{
     background-image: url('../images/mobidic.png');
     background-repeat: no-repeat;
-    background-position-y: 30%;
-    /* background-size: cover; */
+    /* background-position-y: 30%; */
+    background-size: cover;
     min-height: 120vh;
     width: 100vw;
 

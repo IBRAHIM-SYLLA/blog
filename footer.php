@@ -19,7 +19,7 @@
                 <li><a href="connexion.php">connexion</a></li>
                 <li><a href="articles.php"></a>article</li>
             </ul>
-            <p class="copyright"> Copyright BLOG @ 2022 by Ibraboss</p>
+            <p class="copyright"> Copyright BLOG @ 2022 by Ibrahim SYLLA</p>
         </section>
     </footer>
 </body>
